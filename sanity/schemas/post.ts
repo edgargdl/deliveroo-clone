@@ -8,7 +8,7 @@ export default {
   fields: [
     {
       name: 'name',
-      title: 'Restaurant name',
+      title: 'Restaurant name 2',
       type: 'string'
     },
 
