@@ -25,7 +25,7 @@ export default {
         {
             name: "restaurants",
             type: "array",
-            title: "Restaurants",
+            title: "Restaurantssss",
             of: [{type: "reference", to: [{ type: "post"}] }],
 
 

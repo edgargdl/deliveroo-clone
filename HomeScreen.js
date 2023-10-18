@@ -1,5 +1,5 @@
 import { View, Text, Image, TextInput, ScrollView, SafeAreaView } from 'react-native'
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import {
@@ -11,12 +11,23 @@ import {
 
 import FeaturedRow from './FeaturedRow';
 import Categories from './Categories';
-import sanityClient from "./sanity";
+import category from './sanity/schemas/category';
+import { createClient } from '@sanity/client'
 
+
+export const client = createClient({
+  name: 'default',
+  title: 'Deliveroo-clone-yt',
+  projectId: 'qz8pwqf5',
+  dataset: 'production',
+  useCdn: true, // set to `false` to bypass the edge cache
+  apiVersion: '2021-10-21', // use current date (YYYY-MM-DD) to target the latest API version
+
+})
 
 const HomeScreen = () => {
   const navigation = useNavigation();
-  const [featuredCategories, setFeaturedCategories] = useState=([])
+  const [featuredCategories, setFeaturedCategories] = useState([])
 
   useLayoutEffect(() => {
 
@@ -27,9 +38,8 @@ const HomeScreen = () => {
 
   }, []);
 
- useEffect(() => {
-  sanityClient
-  .fetch(`*[_type == "featured"] {
+  useEffect(() => {
+    client.fetch(`*[_type == "featured"] {
     ...,
   post[]->{
     ...,
@@ -39,14 +49,18 @@ const HomeScreen = () => {
     }
     },
   } `)
-  .then((data)=> {
-
-    setFeaturedCategories(data);
-
-  });
+      .then((data) => {
 
 
- },[] );
+
+        setFeaturedCategories(data);
+
+      });
+    console.log("featuredCategories");
+    console.log(featuredCategories);
+  }, []);
+
+
 
   return (
     <SafeAreaView className="bg-white pt-5">
@@ -84,13 +98,8 @@ const HomeScreen = () => {
             placeholder='Restaurants and cuisines'
 
           />
-
-
-
+          
         </View>
-
-
-
       </View>
 
       {/* body */}
@@ -104,35 +113,20 @@ const HomeScreen = () => {
       >
 
         {/* Categories*/}
-
-
         <Categories />
-
-
-
+   
         {/* Featured Rows */}
 
+        {featuredCategories?.map((category) => (
 
-        <FeaturedRow
-          id="123"
-          title="Featured"
-          description="Paid placements from our partners"
-          featuredCategory="featured"
-        />
+          <FeaturedRow
+            key={category._id}
+            id={category._id}
+            title={category.name}
+            description={category.short_description}
+          />
 
-        <FeaturedRow
-          id="1234"
-          title="Tasty Discounts"
-          description="Everyone's been enjoying these juicy discounts!"
-          featuredCategory="discounts"
-        />
-
-        <FeaturedRow
-          id="12345"
-          title="Offers near you!"
-          description="Why not support your local restaurants tonight!"
-          featuredCategory="offers"
-        />
+        ))}
 
 
       </ScrollView>
