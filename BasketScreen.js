@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { useMemo } from 'react';
 import { XCircleIcon } from 'react-native-heroicons/outline';
 import { TouchableOpacity } from 'react-native';
-import { Image } from 'react-native-svg';
+import { Image } from 'react-native';
 import { ScrollView } from 'react-native';
 import { urlFor } from './RestaurantCard';
 
@@ -34,7 +34,7 @@ const BasketScreen = () => {
 
   return (
   <SafeAreaView className="flex-1 bg-white">
-    <View className="flex-1 bg-gray-100">
+    <View className=" bg-gray-100">
       <View className="p-5 border-b border-[#00CCBB] bg-white shadow-xs">
         <View>
           <Text className="text-lg font-bold text-center">Basket</Text>
@@ -66,7 +66,7 @@ const BasketScreen = () => {
       </View>
     </View>
 
-    <ScrollView>
+    <ScrollView vertical>
       {Object.entries(groupedItemsInBasket).map(([key,items]) =>(
         <View key={key}>
           <Text>{items.length} x</Text>
