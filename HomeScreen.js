@@ -82,7 +82,7 @@ const HomeScreen = () => {
             Deliver Now!
           </Text>
           <Text className="font-bold text-xl">
-            Current Location
+            Current Location 
             <ChevronDownIcon size={20} color="#00CCBB" />
           </Text>
         </View>
