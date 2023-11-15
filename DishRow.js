@@ -24,7 +24,6 @@ const DishRow = ({ id, name, description, price, image }) => {
         dispatch(removeFromBasket({ id }));
     };
 
-    console.log(items);
 
     return (
         <>
