@@ -22,14 +22,11 @@ const HomeScreen = () => {
   useEffect(() => {
   }, []);
 
-  const beepTimes = [5, 15, 60, 75]; // Replace with your desired beep times
+
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        {/* Pass beepTimes as a prop to TimerBox */}
-        <TimerBox beepTimes={beepTimes} />
-      </View>
+<ProgressPage/>
     </SafeAreaView>
   );
 };

@@ -1,18 +1,23 @@
 import { Text, View, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
-import {React, useState} from 'react';
+import React, { useState } from 'react';
 
 const CircleButton = ({ initNumber }) => {
-const [number, setNumber] = useState(initNumber);
-const decrementNumber = () => {
+  const [number, setNumber] = useState(initNumber);
+
+  const decrementNumber = () => {
     if (number > 0) {
       setNumber(number - 1);
+    } else {
+      // When the number reaches zero, reset it to the initial number
+      setNumber(initNumber);
     }
   };
+
   return (
     <TouchableOpacity onPress={decrementNumber}>
-    <View style={styles.circleButton}>
+      <View style={styles.circleButton}>
         <Text style={styles.text}>{number}</Text>
-    </View>
+      </View>
     </TouchableOpacity>
   );
 };
@@ -25,7 +30,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    
   },
   text: {
     fontSize: 18,
@@ -33,6 +37,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
 
 export default CircleButton;
