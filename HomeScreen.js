@@ -1,9 +1,7 @@
 import { View, Text, Image, TextInput, ScrollView, SafeAreaView } from 'react-native'
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import Workoutbar from './workoutbar';
-import ProgressPage from './progresspage';
-import TimerBox from './timer';
+import ExerciseCounter from './setsreps';
 
 
 const HomeScreen = () => {
@@ -26,7 +24,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-<ProgressPage/>
+      <ExerciseCounter/>
     </SafeAreaView>
   );
 };
