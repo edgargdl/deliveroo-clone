@@ -3,7 +3,6 @@ import React from 'react'
 import { urlFor } from './RestaurantCard';
 import { MinusCircleIcon, PlusIcon, StarIcon, ArrowLeftIcon, PlusCircleIcon } from 'react-native-heroicons/outline';
 import { useState } from 'react';
-import Currency from "react-currency-formatter";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToBasket, removeFromBasket, selectBasketItemsWithId, } from "./basketSlice";
 
