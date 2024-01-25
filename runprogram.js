@@ -1,10 +1,10 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet, ScrollView } from 'react-native';
-import Excersice from './exercise';
+import Card from './card';
 import ExerciseSelectionModal from './modal';
 
-const Excersices = () => {
+const Runprogram = () => {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -27,11 +27,13 @@ const Excersices = () => {
   const [selectedExercise, setSelectedExercise] = useState(null);
 
   const availableExercises = [
-    "Exercise 1",
-    "Exercise 2",
-    "Exercise 3",
-    "Exercise 4",
-    "Exercise 5",
+    "Day 1",
+    "Day 2",
+    "Day 3",
+    "Day 4",
+    "Day 5",
+    "Day 6",
+    "Day 7",
   ];
 
   const openModal = () => {
@@ -44,15 +46,6 @@ const Excersices = () => {
     // Add the selected exercise to the exerciseNames array
     setExerciseNames([...exerciseNames, exercise]);
   };
-
-
-  // Function to handle exercise deletion
-  const handleExerciseDelete = (exerciseTitle) => {
-    // Filter out the exercise with the given title from the exerciseNames array
-    const updatedExercises = exerciseNames.filter((name) => name !== exerciseTitle);
-    setExerciseNames(updatedExercises);
-  };
-
 
   const styles = StyleSheet.create({
     addButtonContainer: {
@@ -90,12 +83,12 @@ const Excersices = () => {
     <>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.exerciseListContainer}>
-        <ScrollView contentContainerStyle={styles.exerciseList}>
+          <ScrollView contentContainerStyle={styles.exerciseList}>
             {exerciseNames.map((exerciseName, index) => (
-              <Excersice
+              <Card
                 key={index}
                 title={exerciseName}
-                onDelete={handleExerciseDelete} // Pass the delete function
+                
               />
             ))}
           </ScrollView>
@@ -112,9 +105,8 @@ const Excersices = () => {
         onSelectExercise={closeAndSelectExercise}
         onClose={() => setModalVisible(false)}
       />
-
     </>
   );
 };
 
-export default Excersices;
+export default Runprogram;

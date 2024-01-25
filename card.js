@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Excersice = ({ title, onDelete }) => {
+const Card = ({ title, onDelete, showDeleteButton }) => {
   const styles = StyleSheet.create({
     card: {
       backgroundColor: 'black',
       borderRadius: 10,
-      padding: 10,
-      margin: 8,
+      padding: 20,
+      margin: 5,
       flexDirection: 'row',
       justifyContent: 'space-between', // Align title and delete button
     },
@@ -18,16 +18,18 @@ const Excersice = ({ title, onDelete }) => {
     title: {
       color: 'white',
       fontWeight: 'bold',
+      fontSize: 20,
     },
     deleteButton: {
       backgroundColor: 'red', // Red background color for delete button
-      borderRadius: 5,
+      borderRadius: 50,
       paddingHorizontal: 10,
-      paddingVertical: 5,
+      paddingVertical: 2,
     },
     deleteButtonText: {
-      color: 'white',
+      color: 'black',
       fontWeight: 'bold',
+      fontSize: 50,
     },
   });
 
@@ -37,12 +39,14 @@ const Excersice = ({ title, onDelete }) => {
       <View style={styles.content}>
         <Text style={styles.title}>{title}</Text>
       </View>
-      <TouchableOpacity style={styles.deleteButton} onPress={() => onDelete(title)}>
-        <Text style={styles.deleteButtonText}>-</Text>
-      </TouchableOpacity>
+      {showDeleteButton && (
+        <TouchableOpacity style={styles.deleteButton} onPress={() => onDelete(title)}>
+          <Text style={styles.deleteButtonText}>-</Text>
+        </TouchableOpacity>
+      )}
     </View>
     </TouchableOpacity>
   );
 };
 
-export default Excersice;
+export default Card;

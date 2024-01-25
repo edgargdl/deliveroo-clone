@@ -1,10 +1,10 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet, ScrollView } from 'react-native';
-import Excersice from './exercise';
+import Card from './card';
 import ExerciseSelectionModal from './modal';
 
-const Excersices = () => {
+const Programs = () => {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -27,11 +27,13 @@ const Excersices = () => {
   const [selectedExercise, setSelectedExercise] = useState(null);
 
   const availableExercises = [
-    "Exercise 1",
-    "Exercise 2",
-    "Exercise 3",
-    "Exercise 4",
-    "Exercise 5",
+    "Day 1",
+    "Day 2",
+    "Day 3",
+    "Day 4",
+    "Day 5",
+    "Day 6",
+    "Day 7",
   ];
 
   const openModal = () => {
@@ -92,10 +94,11 @@ const Excersices = () => {
         <View style={styles.exerciseListContainer}>
         <ScrollView contentContainerStyle={styles.exerciseList}>
             {exerciseNames.map((exerciseName, index) => (
-              <Excersice
+              <Card
                 key={index}
                 title={exerciseName}
                 onDelete={handleExerciseDelete} // Pass the delete function
+                showDeleteButton={true}
               />
             ))}
           </ScrollView>
@@ -117,4 +120,4 @@ const Excersices = () => {
   );
 };
 
-export default Excersices;
+export default Programs;
