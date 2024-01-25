@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const ExerciseCounter = () => {
-  const [sets, setSets] = useState(4);
-  const [reps, setReps] = useState(8);
-  const [weight, setWeight] = useState(100);
-  const [autoLoadSessions, setAutoLoadSessions] = useState(5);
-  const [autoLoadIncrement, setAutoLoadIncrement] = useState(2);
-  const [deloadSessions, setDeloadSessions] = useState(3);
-  const [deloadDays, setDeloadDays] = useState(7);
+const ExerciseCounter = ({
+  exerciseName,
+  initialSets,
+  initialReps,
+  initialWeight,
+  initialAutoLoadSessions,
+  initialAutoLoadIncrement,
+  initialDeloadSessions,
+  initialDeloadDays,
+}) => {
+  const [sets, setSets] = useState(initialSets);
+  const [reps, setReps] = useState(initialReps);
+  const [weight, setWeight] = useState(initialWeight);
+  const [autoLoadSessions, setAutoLoadSessions] = useState(initialAutoLoadSessions);
+  const [autoLoadIncrement, setAutoLoadIncrement] = useState(initialAutoLoadIncrement);
+  const [deloadSessions, setDeloadSessions] = useState(initialDeloadSessions);
+  const [deloadDays, setDeloadDays] = useState(initialDeloadDays);
 
   const increaseValue = (stateSetter, value) => {
     stateSetter((prevValue) => prevValue + value);
@@ -20,7 +29,7 @@ const ExerciseCounter = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.exerciseName}>Bench Press</Text>
+      <Text style={styles.exerciseName}>{exerciseName}</Text>
       <View style={styles.counterContainer}>
         <View style={styles.counter}>
           <TouchableOpacity onPress={() => decreaseValue(setSets, 1)}>
@@ -44,7 +53,7 @@ const ExerciseCounter = () => {
           <TouchableOpacity onPress={() => decreaseValue(setWeight, 5)}>
             <Text style={styles.button}>-</Text>
           </TouchableOpacity>
-          <Text style={styles.value}>{weight} lb</Text>
+          <Text style={styles.value}>Current Weight {weight} lb</Text>
           <TouchableOpacity onPress={() => increaseValue(setWeight, 5)}>
             <Text style={styles.button}>+</Text>
           </TouchableOpacity>
@@ -53,7 +62,7 @@ const ExerciseCounter = () => {
           <TouchableOpacity onPress={() => decreaseValue(setAutoLoadSessions, 1)}>
             <Text style={styles.button}>-</Text>
           </TouchableOpacity>
-          <Text style={styles.value}>{autoLoadSessions} Sessions to Auto-Load</Text>
+          <Text style={styles.value}>Auto-Load every {autoLoadSessions} day(s)  </Text>
           <TouchableOpacity onPress={() => increaseValue(setAutoLoadSessions, 1)}>
             <Text style={styles.button}>+</Text>
           </TouchableOpacity>
@@ -62,7 +71,7 @@ const ExerciseCounter = () => {
           <TouchableOpacity onPress={() => decreaseValue(setAutoLoadIncrement, 1)}>
             <Text style={styles.button}>-</Text>
           </TouchableOpacity>
-          <Text style={styles.value}>+{autoLoadIncrement} lb/session</Text>
+          <Text style={styles.value}>{autoLoadIncrement} lb to Load</Text>
           <TouchableOpacity onPress={() => increaseValue(setAutoLoadIncrement, 1)}>
             <Text style={styles.button}>+</Text>
           </TouchableOpacity>
@@ -71,7 +80,7 @@ const ExerciseCounter = () => {
           <TouchableOpacity onPress={() => decreaseValue(setDeloadSessions, 1)}>
             <Text style={styles.button}>-</Text>
           </TouchableOpacity>
-          <Text style={styles.value}>{deloadSessions} lb to deload</Text>
+          <Text style={styles.value}>{deloadSessions}lb to Deload</Text>
           <TouchableOpacity onPress={() => increaseValue(setDeloadSessions, 1)}>
             <Text style={styles.button}>+</Text>
           </TouchableOpacity>
@@ -80,7 +89,7 @@ const ExerciseCounter = () => {
           <TouchableOpacity onPress={() => decreaseValue(setDeloadDays, 1)}>
             <Text style={styles.button}>-</Text>
           </TouchableOpacity>
-          <Text style={styles.value}>{deloadDays} Days to deload</Text>
+          <Text style={styles.value}>Deload After {deloadDays} Days</Text>
           <TouchableOpacity onPress={() => increaseValue(setDeloadDays, 1)}>
             <Text style={styles.button}>+</Text>
           </TouchableOpacity>

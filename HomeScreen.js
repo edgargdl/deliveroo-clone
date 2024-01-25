@@ -1,7 +1,8 @@
 import { View, Text, Image, TextInput, ScrollView, SafeAreaView } from 'react-native'
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import ExerciseCounter from './setsreps';
+import Excersice from './exercise';
+import Excersices from './excercises';
 
 
 const HomeScreen = () => {
@@ -24,7 +25,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ExerciseCounter/>
+<Excersices/>
     </SafeAreaView>
   );
 };
