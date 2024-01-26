@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet, ScrollView } from 'react-native';
 import Card from './card';
 import ExerciseSelectionModal from './modal';
+import { Button } from 'react-native-elements';
 
 const Runprogram = () => {
   const navigation = useNavigation();
@@ -19,6 +20,11 @@ const Runprogram = () => {
   const navigateToProgress = () => {
     navigation.navigate('Progress');
   };
+
+    // Define the navigateToProgress function inside the component
+    const navigateToSettings = () => {
+      navigation.navigate('Settings');
+    };
   
 
   const [exerciseNames, setExerciseNames] = useState([
@@ -33,6 +39,7 @@ const Runprogram = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState(null);
+
 
   const availableExercises = [
     "Day 1",
@@ -60,6 +67,12 @@ const Runprogram = () => {
       position: 'absolute',
       bottom: 5,
       right: 10,
+    },
+
+    settingsButtonContainer: {
+      position: 'absolute',
+      bottom: 5,
+      left: 10,
     },
     addButton: {
       backgroundColor: 'black',
@@ -108,6 +121,13 @@ const Runprogram = () => {
             <Text style={styles.addButtonText}>+</Text>
           </TouchableOpacity>
         </View>
+
+        <View style={styles.settingsButtonContainer}>
+        <TouchableOpacity style={styles.addButton}  onPress={navigateToSettings}>
+          <Text style={styles.addButtonText}>S</Text> 
+        </TouchableOpacity>
+  
+      </View>
       
       <ExerciseSelectionModal
         visible={modalVisible}

@@ -16,11 +16,13 @@ const Programs = () => {
   useEffect(() => {}, []);
 
   const [exerciseNames, setExerciseNames] = useState([
-    "Bench Press",
-    "Squats",
-    "Deadlift",
-    "Pull-Ups",
-    "Push-Ups",
+    "Day 1",
+    "Day 2",
+    "Day 3",
+    "Day 4",
+    "Day 5",
+    "Day 6",
+    "Day 7",
   ]);
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -88,24 +90,33 @@ const Programs = () => {
     },
   });
 
+  const navigateToExcercises = () => {
+    navigation.navigate('Excercises');
+  };
+
+
   return (
     <>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.exerciseListContainer}>
-        <ScrollView contentContainerStyle={styles.exerciseList}>
+          <ScrollView contentContainerStyle={styles.exerciseList}>
             {exerciseNames.map((exerciseName, index) => (
+          
               <Card
-                key={index}
                 title={exerciseName}
                 onDelete={handleExerciseDelete} // Pass the delete function
                 showDeleteButton={true}
+                key={index}
+                onPress={navigateToExcercises}
+
               />
+
             ))}
           </ScrollView>
         </View>
         <View style={styles.addButtonContainer}>
           <TouchableOpacity style={styles.addButton} onPress={openModal}>
-            <Text style={styles.addButtonText}>+</Text>
+            <Text style={styles.addButtonText}>+</Text> 
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -115,7 +126,6 @@ const Programs = () => {
         onSelectExercise={closeAndSelectExercise}
         onClose={() => setModalVisible(false)}
       />
-
     </>
   );
 };

@@ -24,6 +24,7 @@
     "react-dom": "18.2.0",
     "react-native": "0.73.2",
     "react-native-animatable": "^1.4.0",
+    "react-native-elements": "^3.4.3",
     "react-native-heroicons": "^3.2.0",
     "react-native-maps": "1.8.0",
     "react-native-modal": "^13.0.1",
