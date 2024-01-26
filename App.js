@@ -1,13 +1,11 @@
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { TailwindProvider } from 'tailwindcss-react-native';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import HomeScreen from './HomeScreen';
-import RestaurantScreen from './RestaurantScreen';
+import ProgressPage from './progresspage';
 import { store } from './store';
-import PreparingOrderScreen from './PreparingOrderScreen';
-import DeliveryScreen from './DeliveryScreen';
-
 
 const Stack = createNativeStackNavigator();
 
@@ -18,11 +16,10 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Progress" component={ProgressPage} />
           </Stack.Navigator>
-    </NavigationContainer>
-      </Provider >
-    </TailwindProvider >
-
+        </NavigationContainer>
+      </Provider>
+    </TailwindProvider>
   );
 }
-

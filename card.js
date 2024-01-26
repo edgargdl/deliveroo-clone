@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Card = ({ title, onDelete, showDeleteButton, date }) => {
+const Card = ({ title, onDelete, showDeleteButton, date, onPress }) => {
+
   const styles = StyleSheet.create({
 
     card: {
@@ -39,18 +40,21 @@ const Card = ({ title, onDelete, showDeleteButton, date }) => {
   });
 
   return (
-    <TouchableOpacity>
-      <View style={styles.card}>
-        <View style={styles.content}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.date}>{date}</Text>
-        </View>
-        {showDeleteButton && (
-          <TouchableOpacity style={styles.deleteButton} onPress={() => onDelete(title)}>
-            <Text style={styles.deleteButtonText}>-</Text>
-          </TouchableOpacity>
-        )}
+    <TouchableOpacity onPress={onPress} style={styles.card}>
+      <View style={styles.content}>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.date}>{date}</Text>
       </View>
+      {showDeleteButton && (
+        <TouchableOpacity 
+          style={styles.deleteButton} 
+          onPress={() => onDelete(title)}
+          // Prevent the delete button from triggering the main onPress
+          onPressIn={(e) => e.stopPropagation()} 
+        >
+          <Text style={styles.deleteButtonText}>-</Text>
+        </TouchableOpacity>
+      )}
     </TouchableOpacity>
   );
 };

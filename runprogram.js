@@ -15,6 +15,12 @@ const Runprogram = () => {
 
   useEffect(() => {}, []);
 
+  // Define the navigateToProgress function inside the component
+  const navigateToProgress = () => {
+    navigation.navigate('Progress');
+  };
+  
+
   const [exerciseNames, setExerciseNames] = useState([
     { title: "Day 1", date: "October 19th, 2024", showDeleteButton: false },
     { title: "Day 2", date: "October 20th, 2024", showDeleteButton: false },
@@ -85,16 +91,17 @@ const Runprogram = () => {
     <>
       
         <View style={styles.exerciseListContainer}>
-          <ScrollView contentContainerStyle={styles.exerciseList}>
-            {exerciseNames.map((exercise, index) => (
-              <Card
-                key={index}
-                title={exercise.title}
-                date={exercise.date}
-                showDeleteButton={exercise.showDeleteButton}
-              />
-            ))}
-          </ScrollView>
+        <ScrollView contentContainerStyle={styles.exerciseList}>
+        {exerciseNames.map((exercise, index) => (
+  <Card
+    key={index}
+    title={exercise.title}
+    date={exercise.date}
+    showDeleteButton={exercise.showDeleteButton}
+    onPress={navigateToProgress}
+  />
+))}
+      </ScrollView>
         </View>
         <View style={styles.addButtonContainer}>
           <TouchableOpacity style={styles.addButton} onPress={openModal}>

@@ -1,5 +1,5 @@
 import { View, Text, Image, TextInput, ScrollView, SafeAreaView } from 'react-native'
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState  } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import Programs from './programs';
 import Runprogram from './runprogram';
@@ -26,7 +26,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-<Programs/>
+      <Runprogram/>
     </SafeAreaView>
   );
 };
