@@ -16,11 +16,13 @@ const Runprogram = () => {
   useEffect(() => {}, []);
 
   const [exerciseNames, setExerciseNames] = useState([
-    "Bench Press",
-    "Squats",
-    "Deadlift",
-    "Pull-Ups",
-    "Push-Ups",
+    { title: "Day 1", date: "October 19th, 2024", showDeleteButton: false },
+    { title: "Day 2", date: "October 20th, 2024", showDeleteButton: false },
+    { title: "Day 3", date: "October 21st, 2024", showDeleteButton: false },
+    { title: "Day 4", date: "October 22nd, 2024", showDeleteButton: false },
+    { title: "Day 5", date: "October 23rd, 2024", showDeleteButton: false },
+    { title: "Day 6", date: "October 24th, 2024", showDeleteButton: false },
+    { title: "Day 7", date: "October 25th, 2024", showDeleteButton: false },
   ]);
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -81,14 +83,15 @@ const Runprogram = () => {
 
   return (
     <>
-      <SafeAreaView style={{ flex: 1 }}>
+      
         <View style={styles.exerciseListContainer}>
           <ScrollView contentContainerStyle={styles.exerciseList}>
-            {exerciseNames.map((exerciseName, index) => (
+            {exerciseNames.map((exercise, index) => (
               <Card
                 key={index}
-                title={exerciseName}
-                
+                title={exercise.title}
+                date={exercise.date}
+                showDeleteButton={exercise.showDeleteButton}
               />
             ))}
           </ScrollView>
@@ -98,7 +101,7 @@ const Runprogram = () => {
             <Text style={styles.addButtonText}>+</Text>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      
       <ExerciseSelectionModal
         visible={modalVisible}
         exercises={availableExercises}
