@@ -26,7 +26,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-<Runprogram/>
+<Programs/>
     </SafeAreaView>
   );
 };
