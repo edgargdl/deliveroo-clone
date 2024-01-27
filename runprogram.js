@@ -23,7 +23,7 @@ const Runprogram = () => {
 
     // Define the navigateToProgress function inside the component
     const navigateToSettings = () => {
-      navigation.navigate('Settings');
+      navigation.navigate('Programs');
     };
   
 
