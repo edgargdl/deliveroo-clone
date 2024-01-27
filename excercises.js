@@ -38,6 +38,12 @@ const Excersices = () => {
     setModalVisible(true);
   };
 
+  const navigateToExcercise = () => {
+    console.log("Navigate 2");
+    navigation.navigate('Excercise');
+  };
+
+
   const closeAndSelectExercise = (exercise) => {
     setSelectedExercise(exercise);
     setModalVisible(false);
@@ -88,7 +94,7 @@ const Excersices = () => {
 
   return (
     <>
-      <SafeAreaView style={{ flex: 1 }}>
+      
         <View style={styles.exerciseListContainer}>
         <ScrollView contentContainerStyle={styles.exerciseList}>
             {exerciseNames.map((exerciseName, index) => (
@@ -96,6 +102,7 @@ const Excersices = () => {
                 key={index}
                 title={exerciseName}
                 onDelete={handleExerciseDelete} // Pass the delete function
+onPress={navigateToExcercise}
               />
             ))}
           </ScrollView>
@@ -105,7 +112,7 @@ const Excersices = () => {
             <Text style={styles.addButtonText}>+</Text>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      
       <ExerciseSelectionModal
         visible={modalVisible}
         exercises={availableExercises}

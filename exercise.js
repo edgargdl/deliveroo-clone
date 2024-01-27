@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Excersice = ({ title, onDelete }) => {
+const Excersice = ({ title, onDelete , onPress }) => {
   const styles = StyleSheet.create({
     card: {
       backgroundColor: 'black',
@@ -32,12 +32,17 @@ const Excersice = ({ title, onDelete }) => {
   });
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
     <View style={styles.card}>
       <View style={styles.content}>
         <Text style={styles.title}>{title}</Text>
       </View>
       <TouchableOpacity style={styles.deleteButton} onPress={() => onDelete(title)}>
+
+        
+
+
+
         <Text style={styles.deleteButtonText}>-</Text>
       </TouchableOpacity>
     </View>
